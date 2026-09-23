@@ -1,0 +1,167 @@
+# ─────────────────────────────────────────────────────────────
+#  Админка сайта-портфолио (Decap CMS).
+#  Перед первым запуском замени ДВЕ строки ниже (repo и base_url).
+# ─────────────────────────────────────────────────────────────
+backend:
+  name: github
+  repo: ИМЯ-НА-GITHUB/portfolio-site        # ← твой GitHub-логин / название репозитория
+  branch: main
+  base_url: https://ТВОЙ-САЙТ.vercel.app     # ← адрес сайта на Vercel (без слэша в конце)
+  auth_endpoint: api/auth
+  commit_messages:
+    update: "Обновлено: {{slug}}"
+    uploadMedia: "Загружена картинка {{path}}"
+
+locale: ru
+publish_mode: simple
+media_folder: img/uploads
+public_folder: /img/uploads
+logo_url: /img/me-mini.webp
+
+collections:
+  # ── Мои работы ─────────────────────────────────────────────
+  - name: works
+    label: "Мои работы"
+    description: "Проекты для раздела «Мои работы». Порядок в списке = порядок на сайте — перетаскивай, чтобы поменять."
+    editor: { preview: false }
+    files:
+      - name: projects
+        label: "Проекты"
+        file: data/projects.json
+        fields:
+          - label: "Проекты"
+            name: projects
+            widget: list
+            label_singular: "проект"
+            summary: "{{fields.title}}"
+            collapsed: true
+            add_to_top: true
+            fields:
+              - { label: "Название", name: title, widget: string }
+              - { label: "Показывать на сайте", name: visible, widget: boolean, default: true }
+              - { label: "Наклейка «new!»", name: isNew, widget: boolean, default: false, required: false }
+              - { label: "Клиент / для кого", name: client, widget: string, required: false }
+              - { label: "Год", name: year, widget: string, required: false }
+              - label: "Категории (для фильтров)"
+                name: tags
+                widget: select
+                multiple: true
+                min: 1
+                options: ["Айдентика", "Иллюстрация", "Музыка", "Мерч", "SMM", "Маркетплейсы", "Полиграфия"]
+              - { label: "Короткое описание", name: desc, widget: text, required: false }
+              - label: "Обложка карточки"
+                name: cover
+                widget: image
+                required: false
+                hint: "Лучше вертикальная 4:5. Если оставить пустой — возьмётся первый слайд. JPG/WEBP до ~5 МБ, сайт сам уменьшит."
+              - label: "Слайды"
+                name: slides
+                widget: list
+                label_singular: "слайд"
+                summary: "{{fields.caption}}"
+                collapsed: true
+                fields:
+                  - { label: "Картинка", name: image, widget: image }
+                  - { label: "Подпись (необязательно)", name: caption, widget: string, required: false }
+
+  # ── Тексты сайта ───────────────────────────────────────────
+  - name: settings
+    label: "Тексты сайта"
+    editor: { preview: false }
+    files:
+      - name: site
+        label: "Обо мне, опыт, скиллы, услуги, контакты"
+        file: data/site.json
+        fields:
+          - label: "Обо мне"
+            name: about
+            widget: object
+            collapsed: true
+            fields:
+              - { label: "Первая крупная фраза", name: lead, widget: text }
+              - label: "Абзацы"
+                name: paragraphs
+                widget: list
+                field: { label: "Абзац", name: p, widget: text }
+                hint: "Чтобы выделить слова розовым маркером, оберни их в **две звёздочки**."
+              - { label: "Плашки внизу листа", name: facts, widget: list, field: { label: "Плашка", name: f, widget: string } }
+              - { label: "Подпись", name: sign, widget: string }
+          - label: "Опыт (сет-лист)"
+            name: experience
+            widget: list
+            label_singular: "место работы"
+            summary: "{{fields.company}} — {{fields.period}}"
+            collapsed: true
+            fields:
+              - { label: "Компания", name: company, widget: string }
+              - { label: "Период", name: period, widget: string, hint: "Например: авг 2026 — сейчас" }
+              - { label: "Город", name: place, widget: string, required: false }
+              - { label: "Должность", name: role, widget: string }
+              - { label: "Что делала", name: what, widget: text }
+              - { label: "Работаю здесь сейчас («сейчас играет»)", name: now, widget: boolean, default: false, required: false }
+          - { label: "Образование", name: education, widget: string }
+          - label: "Мои скиллы"
+            name: skills
+            widget: list
+            label_singular: "скилл"
+            summary: "{{fields.name}}"
+            collapsed: true
+            fields:
+              - { label: "Название", name: name, widget: string, hint: "Коротко: до 14 букв, иначе текст по кругу станет мелким" }
+              - label: "Иконка"
+                name: icon
+                widget: select
+                options:
+                  - { label: "Слои", value: layers }
+                  - { label: "Перо", value: pen }
+                  - { label: "Макет", value: layout }
+                  - { label: "Рамка", value: frame }
+                  - { label: "Кривая", value: bezier }
+                  - { label: "Шаблоны", value: template }
+                  - { label: "Палитра", value: palette }
+                  - { label: "Звезда", value: star }
+                  - { label: "Принтер", value: printer }
+                  - { label: "Колонки текста", value: columns }
+                  - { label: "График", value: chart }
+                  - { label: "Волшебная палочка", value: wand }
+                  - { label: "Капля", value: drop }
+                  - { label: "Стилус", value: stylus }
+                  - { label: "Камера", value: camera }
+                  - { label: "Экран", value: screen }
+                  - { label: "Кисть", value: brush }
+                  - { label: "Видео", value: video }
+                  - { label: "Коробка / упаковка", value: box }
+                  - { label: "Шрифт", value: type }
+          - label: "Что я делаю (услуги)"
+            name: services
+            widget: list
+            label_singular: "услугу"
+            summary: "{{fields.title}}"
+            collapsed: true
+            fields:
+              - { label: "Заголовок", name: title, widget: string }
+              - { label: "Текст", name: text, widget: text }
+              - label: "Иконка"
+                name: icon
+                widget: select
+                options:
+                  - { label: "Звезда-шипик", value: spiky }
+                  - { label: "Сердце", value: heart }
+                  - { label: "Молния", value: bolt }
+                  - { label: "Искра", value: spark }
+          - label: "Контакты"
+            name: contacts
+            widget: object
+            collapsed: true
+            fields:
+              - { label: "Почта", name: email, widget: string }
+              - { label: "Telegram (без @)", name: telegram, widget: string }
+              - { label: "Телефон", name: phone, widget: string }
+          - label: "Финал игры с наклейками"
+            name: game
+            widget: object
+            collapsed: true
+            fields:
+              - { label: "Заголовок", name: title, widget: string }
+              - { label: "Текст", name: text, widget: text, hint: "Слово {код} заменится на кодовое слово в чёрной плашке" }
+              - { label: "Кодовое слово", name: code, widget: string }

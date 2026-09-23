@@ -1,0 +1,167 @@
+{
+  "projects": [
+    {
+      "title": "Holy Sinners",
+      "visible": true,
+      "isNew": true,
+      "client": "поп-панк группа",
+      "year": "",
+      "tags": [
+        "Айдентика",
+        "Иллюстрация",
+        "Музыка",
+        "Мерч",
+        "Полиграфия"
+      ],
+      "desc": "Айдентика для поп-панк группы: логотип, портреты участников, афиши, мерч и стикерпак.",
+      "cover": "img/hs-ksenia.webp",
+      "slides": [
+        {
+          "image": "img/hs-logo.webp",
+          "caption": "логотип"
+        },
+        {
+          "image": "img/hs-alena.webp",
+          "caption": "участники: барабаны"
+        },
+        {
+          "image": "img/hs-danya.webp",
+          "caption": "участники: гитара"
+        },
+        {
+          "image": "img/hs-ksenia.webp",
+          "caption": "участники: вокал"
+        },
+        {
+          "image": "img/hs-daniil.webp",
+          "caption": "участники: гитара"
+        },
+        {
+          "image": "img/hs-ildar.webp",
+          "caption": "участники: гитара"
+        },
+        {
+          "image": "img/hs-duo.webp",
+          "caption": "иллюстрация"
+        },
+        {
+          "image": "img/hs-poster-street.webp",
+          "caption": "афиша на остановке"
+        },
+        {
+          "image": "img/hs-poster-wall.webp",
+          "caption": "афиша на стене"
+        },
+        {
+          "image": "img/hs-tee-front.webp",
+          "caption": "футболка, перед"
+        },
+        {
+          "image": "img/hs-tee-back.webp",
+          "caption": "футболка, спина"
+        },
+        {
+          "image": "img/hs-shopper.webp",
+          "caption": "шопер"
+        },
+        {
+          "image": "img/hs-stickers.webp",
+          "caption": "стикерпак"
+        }
+      ]
+    },
+    {
+      "title": "24 бренда косметики",
+      "visible": true,
+      "isNew": false,
+      "client": "",
+      "year": "",
+      "tags": [
+        "SMM"
+      ],
+      "desc": "Контент для Instagram: посты, stories, обложки Reels, карусели.",
+      "cover": "",
+      "slides": []
+    },
+    {
+      "title": "Брендбук с нуля",
+      "visible": true,
+      "isNew": false,
+      "client": "",
+      "year": "",
+      "tags": [
+        "Айдентика",
+        "Полиграфия"
+      ],
+      "desc": "Айдентика дистрибьютора: стандарты для всех каналов.",
+      "cover": "",
+      "slides": []
+    },
+    {
+      "title": "Карточки маркетплейсов",
+      "visible": true,
+      "isNew": false,
+      "client": "",
+      "year": "",
+      "tags": [
+        "Маркетплейсы"
+      ],
+      "desc": "Карточки товаров и A/B-тесты визуала.",
+      "cover": "",
+      "slides": []
+    },
+    {
+      "title": "Обложки треков",
+      "visible": true,
+      "isNew": false,
+      "client": "",
+      "year": "",
+      "tags": [
+        "Музыка",
+        "Иллюстрация"
+      ],
+      "desc": "Обложки и промо для релизов артистов.",
+      "cover": "",
+      "slides": []
+    },
+    {
+      "title": "Диджитал-креативы",
+      "visible": true,
+      "isNew": false,
+      "client": "",
+      "year": "",
+      "tags": [
+        "SMM"
+      ],
+      "desc": "Рекламные креативы для digital.",
+      "cover": "",
+      "slides": []
+    },
+    {
+      "title": "Фотозоны и POS",
+      "visible": true,
+      "isNew": false,
+      "client": "",
+      "year": "",
+      "tags": [
+        "Полиграфия"
+      ],
+      "desc": "Брендинг b2b-мероприятий, POS-материалы, упаковка.",
+      "cover": "",
+      "slides": []
+    },
+    {
+      "title": "Личные иллюстрации",
+      "visible": true,
+      "isNew": false,
+      "client": "",
+      "year": "",
+      "tags": [
+        "Иллюстрация"
+      ],
+      "desc": "Персонажи и арт вне заказов.",
+      "cover": "",
+      "slides": []
+    }
+  ]
+}
