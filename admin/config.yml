@@ -6,7 +6,7 @@ backend:
   name: github
   repo: accgrap-ops/portfolio-site        # ← твой GitHub-логин / название репозитория
   branch: main
-  base_url: https://portfolio-site-theta-ruby.vercel.app     # ← адрес сайта на Vercel (без слэша в конце)
+  base_url: https://www.holyworks.uz
   auth_endpoint: api/auth
   commit_messages:
     update: "Обновлено: {{slug}}"
