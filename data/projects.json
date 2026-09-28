@@ -1,20 +1,6 @@
 {
   "projects": [
     {
-      "title": "Holy Sinners",
-      "visible": true,
-      "isNew": true,
-      "client": "поп-панк группа",
-      "year": "",
-      "tags": [
-        "Айдентика",
-        "Иллюстрация",
-        "Музыка",
-        "Мерч",
-        "Полиграфия"
-      ],
-      "desc": "Айдентика для поп-панк группы: логотип, портреты участников, афиши, мерч и стикерпак.",
-      "cover": "img/hs-ksenia.webp",
       "slides": [
         {
           "image": "img/hs-logo.webp",
@@ -68,100 +54,193 @@
           "image": "img/hs-stickers.webp",
           "caption": "стикерпак"
         }
-      ]
+      ],
+      "client": "поп-панк группа",
+      "desc": "Айдентика для поп-панк группы: логотип, портреты участников, афиши, мерч и стикерпак.",
+      "visible": true,
+      "isNew": true,
+      "cover": "img/hs-ksenia.webp",
+      "title": "Holy Sinners",
+      "tags": [
+        "Айдентика",
+        "Иллюстрация",
+        "Музыка",
+        "Мерч",
+        "Полиграфия"
+      ],
+      "year": ""
     },
     {
-      "title": "24 бренда косметики",
+      "slides": [
+        {
+          "image": "/img/uploads/photo_2025-03-22_12-54-12.jpg",
+          "caption": "Фирменный шопер для сотрудников компании и партнеров "
+        },
+        {
+          "image": "/img/uploads/photo_2025-03-22_12-54-11.jpg"
+        },
+        {
+          "image": "/img/uploads/photo_2025-03-22_13-01-53.jpg"
+        },
+        {
+          "image": "/img/uploads/photo_2025-04-30_18-01-42.jpg"
+        },
+        {
+          "image": "/img/uploads/photo_2025-07-21_16-55-50.jpg"
+        },
+        {
+          "image": "/img/uploads/photo_2025-07-21_16-55-52.jpg"
+        },
+        {
+          "image": "/img/uploads/photo_2026-02-15_17-15-04.jpg",
+          "caption": "Обложки для Rills формата интервью"
+        },
+        {
+          "image": "/img/uploads/photo_2026-02-15_17-15-02.jpg"
+        },
+        {
+          "image": "/img/uploads/фут-2.jpg"
+        }
+      ],
+      "client": "",
+      "desc": "Контент для Instagram: посты, stories, обложки Reels, карусели.",
       "visible": true,
       "isNew": false,
-      "client": "",
-      "year": "",
+      "cover": "/img/uploads/без-имени-1.jpg",
+      "title": "FB DISTRIUTORS GRUP",
       "tags": [
         "SMM"
       ],
-      "desc": "Контент для Instagram: посты, stories, обложки Reels, карусели.",
-      "cover": "",
-      "slides": []
+      "year": ""
     },
     {
-      "title": "Брендбук с нуля",
+      "slides": [
+        {
+          "image": "/img/uploads/изображение-chatgpt-28-сент.-2026-г.-12_41_09.png"
+        },
+        {
+          "image": "/img/uploads/изображение-chatgpt-28-сент.-2026-г.-12_41_01.png"
+        },
+        {
+          "image": "/img/uploads/изображение-chatgpt-28-сент.-2026-г.-12_08_57.png"
+        }
+      ],
+      "client": "",
+      "desc": "Айдентика дистрибьютора: стандарты для всех каналов.",
       "visible": true,
       "isNew": false,
-      "client": "",
-      "year": "",
+      "cover": "/img/uploads/бьюти.jpg",
+      "title": "Брендбук с нуля",
       "tags": [
         "Айдентика",
         "Полиграфия"
       ],
-      "desc": "Айдентика дистрибьютора: стандарты для всех каналов.",
-      "cover": "",
-      "slides": []
+      "year": ""
     },
     {
-      "title": "Карточки маркетплейсов",
+      "slides": [],
+      "client": "",
+      "desc": "Карточки товаров и A/B-тесты визуала.",
       "visible": true,
       "isNew": false,
-      "client": "",
-      "year": "",
+      "cover": "",
+      "title": "Карточки маркетплейсов",
       "tags": [
         "Маркетплейсы"
       ],
-      "desc": "Карточки товаров и A/B-тесты визуала.",
-      "cover": "",
-      "slides": []
+      "year": ""
     },
     {
-      "title": "Обложки треков",
+      "slides": [],
+      "client": "",
+      "desc": "Обложки и промо для релизов артистов.",
       "visible": true,
       "isNew": false,
-      "client": "",
-      "year": "",
+      "cover": "",
+      "title": "Обложки треков",
       "tags": [
         "Музыка",
         "Иллюстрация"
       ],
-      "desc": "Обложки и промо для релизов артистов.",
-      "cover": "",
-      "slides": []
+      "year": ""
     },
     {
-      "title": "Диджитал-креативы",
+      "slides": [
+        {
+          "image": "/img/uploads/photo_2026-09-28_11-34-02.jpg"
+        },
+        {
+          "image": "/img/uploads/photo_2026-09-28_11-34-08.jpg"
+        },
+        {
+          "image": "/img/uploads/photo_2026-09-28_11-34-15.jpg"
+        },
+        {
+          "image": "/img/uploads/photo_2026-09-28_11-34-31.jpg"
+        },
+        {}
+      ],
+      "client": "",
+      "desc": "Рекламные креативы для digital.",
       "visible": true,
       "isNew": false,
-      "client": "",
-      "year": "",
+      "cover": "",
+      "title": "Диджитал-креативы",
       "tags": [
         "SMM"
       ],
-      "desc": "Рекламные креативы для digital.",
-      "cover": "",
-      "slides": []
+      "year": ""
     },
     {
-      "title": "Фотозоны и POS",
+      "slides": [],
+      "client": "",
+      "desc": "Брендинг b2b-мероприятий, POS-материалы, упаковка.",
       "visible": true,
       "isNew": false,
-      "client": "",
-      "year": "",
+      "cover": "",
+      "title": "Фотозоны и POS",
       "tags": [
         "Полиграфия"
       ],
-      "desc": "Брендинг b2b-мероприятий, POS-материалы, упаковка.",
-      "cover": "",
-      "slides": []
+      "year": ""
     },
     {
-      "title": "Личные иллюстрации",
+      "slides": [
+        {
+          "image": "/img/uploads/photo_2025-07-21_18-00-43.jpg"
+        },
+        {
+          "image": "/img/uploads/photo_2025-03-24_21-03-17.jpg"
+        },
+        {
+          "image": "/img/uploads/photo_2025-03-24_21-03-15.jpg"
+        },
+        {
+          "image": "/img/uploads/photo_2025-03-24_21-03-16-2-.jpg"
+        },
+        {
+          "image": "/img/uploads/photo_2025-03-24_21-40-44-3-.jpg"
+        },
+        {
+          "image": "/img/uploads/photo_2025-03-24_21-40-44.jpg"
+        },
+        {
+          "image": "/img/uploads/photo_2025-03-24_21-40-45.jpg"
+        },
+        {
+          "image": "/img/uploads/photo_2025-03-24_22-00-37.jpg"
+        }
+      ],
+      "client": "",
+      "desc": "Персонажи и арт вне заказов.",
       "visible": true,
       "isNew": false,
-      "client": "",
-      "year": "",
+      "cover": "/img/uploads/изображение-chatgpt-28-сент.-2026-г.-13_03_10.png",
+      "title": "Личные иллюстрации",
       "tags": [
         "Иллюстрация"
       ],
-      "desc": "Персонажи и арт вне заказов.",
-      "cover": "",
-      "slides": []
+      "year": ""
     }
   ]
 }
