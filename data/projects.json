@@ -123,6 +123,12 @@
         },
         {
           "image": "/img/uploads/изображение-chatgpt-28-сент.-2026-г.-12_08_57.png"
+        },
+        {
+          "image": "/img/uploads/photo_2025-07-21_16-43-46-2-.jpg"
+        },
+        {
+          "image": "/img/uploads/photo_2025-07-21_16-43-46-3-.jpg"
         }
       ],
       "client": "",
@@ -138,12 +144,23 @@
       "year": ""
     },
     {
-      "slides": [],
+      "slides": [
+        {
+          "image": "/img/uploads/photo_2026-02-15_17-16-26.jpg"
+        },
+        {
+          "image": "/img/uploads/photo_2026-02-15_17-16-28.jpg"
+        },
+        {
+          "image": "/img/uploads/photo_2026-02-15_17-16-24.jpg"
+        },
+        {}
+      ],
       "client": "",
       "desc": "Карточки товаров и A/B-тесты визуала.",
       "visible": true,
       "isNew": false,
-      "cover": "",
+      "cover": "/img/uploads/photo_2026-02-15_17-16-29.jpg",
       "title": "Карточки маркетплейсов",
       "tags": [
         "Маркетплейсы"
@@ -151,12 +168,25 @@
       "year": ""
     },
     {
-      "slides": [],
+      "slides": [
+        {
+          "image": "/img/uploads/photo_2025-03-24_22-05-48.jpg"
+        },
+        {
+          "image": "/img/uploads/photo_2025-03-24_22-05-47.jpg"
+        },
+        {
+          "image": "/img/uploads/photo_2025-03-24_22-05-48-3-.jpg"
+        },
+        {
+          "image": "/img/uploads/photo_2025-03-24_22-05-48-2-.jpg"
+        }
+      ],
       "client": "",
       "desc": "Обложки и промо для релизов артистов.",
       "visible": true,
       "isNew": false,
-      "cover": "",
+      "cover": "/img/uploads/photo_2025-03-24_22-05-48-3-.jpg",
       "title": "Обложки треков",
       "tags": [
         "Музыка",
@@ -178,13 +208,19 @@
         {
           "image": "/img/uploads/photo_2026-09-28_11-34-31.jpg"
         },
-        {}
+        {},
+        {
+          "image": "/img/uploads/photo_2025-04-16_10-26-33.jpg"
+        },
+        {
+          "image": "/img/uploads/photo_2025-04-16_10-26-32.jpg"
+        }
       ],
       "client": "",
       "desc": "Рекламные креативы для digital.",
       "visible": true,
       "isNew": false,
-      "cover": "",
+      "cover": "/img/uploads/photo_2025-04-16_10-26-32.jpg",
       "title": "Диджитал-креативы",
       "tags": [
         "SMM"
@@ -192,12 +228,16 @@
       "year": ""
     },
     {
-      "slides": [],
+      "slides": [
+        {
+          "image": "/img/uploads/photo_2025-03-22_12-56-40.jpg"
+        }
+      ],
       "client": "",
       "desc": "Брендинг b2b-мероприятий, POS-материалы, упаковка.",
       "visible": true,
       "isNew": false,
-      "cover": "",
+      "cover": "/img/uploads/photo_2025-03-22_12-56-44.jpg",
       "title": "Фотозоны и POS",
       "tags": [
         "Полиграфия"
