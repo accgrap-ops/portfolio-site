@@ -269,7 +269,7 @@ section{position:relative}
 .card .ph{position:relative;background:var(--white);padding:12px 12px 14px;box-shadow:6px 8px 0 var(--ink);transition:box-shadow .3s}
 .card:hover .ph{box-shadow:10px 14px 0 var(--pink)}
 .card .img{aspect-ratio:4/5;overflow:hidden;background:var(--ink)}
-.card .img img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.card .img img,.card .img video{width:100%;height:100%;object-fit:cover;transition:transform .6s}
 .card:hover .img img{transform:scale(1.05)}
 .card .tape{top:-14px;left:50%;margin-left:-60px;transform:rotate(var(--tr,-4deg))}
 .card .cap{display:flex;justify-content:space-between;gap:10px;align-items:baseline;margin-top:12px;color:var(--ink)}
@@ -297,7 +297,7 @@ section{position:relative}
 .slides{flex:1;display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:20px var(--gut);align-items:center;scrollbar-width:none;overscroll-behavior-x:contain}
 .slides::-webkit-scrollbar{display:none}
 .slide{flex:none;scroll-snap-align:center;height:100%;max-height:72vh;display:flex;flex-direction:column;gap:8px;max-width:88vw}
-.slide img{height:calc(100% - 28px);min-width:120px;width:auto;max-width:88vw;object-fit:contain;background:#111;border:1.5px solid var(--line)}
+.slide img,.slide video{height:calc(100% - 28px);min-width:120px;width:auto;max-width:88vw;object-fit:contain;background:#111;border:1.5px solid var(--line)}
 .slide figcaption{font-family:var(--f-hand);font-size:22px;color:var(--pink);line-height:1}
 .v-bar{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-inline:var(--gut);flex-wrap:wrap}
 .v-count{font-family:var(--f-display);font-size:22px;font-variant-numeric:tabular-nums;letter-spacing:.06em}
@@ -610,7 +610,8 @@ const plural = (n,a,b,c) => { const m10 = n%10, m100 = n%100; return m10===1&&m1
 const slug = (s,i) => (String(s||"p").toLowerCase().replace(/[^a-zа-яё0-9]+/gi,"-").replace(/^-+|-+$/g,"") || "p") + "-" + i;
 /* On Vercel, uploaded images are resized on the fly; elsewhere the original file is used. */
 const IMG_CDN = !!window.IMG_CDN;
-const imgURL = (src, w) => (IMG_CDN && /^\/img\/uploads\//.test(src||"")) ? `/_vercel/image?url=${encodeURIComponent(src)}&w=${w}&q=80` : (src||"");
+const isVid = src => /\.(mp4|webm|m4v|mov)(\?|#|$)/i.test(src||"");
+const imgURL = (src, w) => (IMG_CDN && !isVid(src) && /^\/img\/uploads\//.test(src||"")) ? `/_vercel/image?url=${encodeURIComponent(src)}&w=${w}&q=80` : (src||"");
 
 let SITE = {}, PROJECTS = [];
 
@@ -687,7 +688,7 @@ function renderContent(){
   $("#win-text").innerHTML = esc(g.text || "").replace("{код}", `<span class="code">${esc(g.code || "")}</span>`);
 
   PROJECTS = (window.RAW_PROJECTS||[]).filter(p => p && p.visible !== false).map((p,i) => {
-    const slides = (p.slides||[]).filter(s => s && s.image).map(s => [s.image, s.caption||""]);
+    const slides = (p.slides||[]).filter(s => s && (s.video || s.image)).map(s => [s.video || s.image, s.caption||""]);
     return { id: slug(p.title,i), title: p.title||"Без названия", year: p.year||"", client: p.client||"",
       tags: (p.tags||[]).filter(t => CATEGORIES.includes(t)), desc: p.desc||"", isNew: !!p.isNew,
       cover: p.cover || (slides[0] && slides[0][0]) || "", slides,
@@ -932,6 +933,8 @@ function cardHTML(p,i){
   const count = p.placeholder ? "скоро" : `${n} ${plural(n,"слайд","слайда","слайдов")}`;
   const img = p.placeholder
     ? `<div class="placeholder" style="background:${p.color}"><div class="halftone"></div><div><b>${esc(p.title)}</b><small>тут будет кейс</small></div></div>`
+    : isVid(p.cover)
+    ? `<video src="${esc(p.cover)}#t=0.1" muted loop playsinline autoplay preload="metadata" aria-label="${esc(p.title)} — обложка проекта"></video>`
     : `<img src="${esc(imgURL(p.cover,960))}" data-src="${esc(p.cover)}" onerror="if(this.dataset.src&&this.src.indexOf('_vercel')>-1){this.src=this.dataset.src}" alt="${esc(p.title)} — обложка проекта" decoding="async">`;
   const badge = p.placeholder ? '<span class="badge">скоро</span>' : p.isNew ? '<span class="badge">new!</span>' : "";
   return `<button class="card${p.placeholder?" is-ph":""}" type="button" data-id="${p.id}" data-flip-id="${p.id}" style="--r:${r}deg;--tr:${-r*2}deg">
@@ -970,7 +973,9 @@ async function openCase(id){
   $("#v-tags").innerHTML = p.tags.map(t=>`<span>${esc(t)}</span>`).join("");
   const slides = p.placeholder ? [[null,"место для слайда 1"],[null,"место для слайда 2"],[null,"место для слайда 3"]] : p.slides;
   total = slides.length; cur = 0; updCount();
-  slidesBox.innerHTML = slides.map(([src,cap],i) => src
+  slidesBox.innerHTML = slides.map(([src,cap],i) => src && isVid(src)
+    ? `<figure class="slide"><video src="${esc(src)}#t=0.1" controls playsinline preload="metadata" aria-label="${esc(p.title)}${cap ? ": "+esc(cap) : ""}"></video>${cap ? `<figcaption>${esc(cap)}</figcaption>` : ""}</figure>`
+    : src
     ? `<figure class="slide"><img src="${esc(imgURL(src,1600))}" data-src="${esc(src)}" onerror="if(this.dataset.src&&this.src.indexOf('_vercel')>-1){this.src=this.dataset.src}" alt="${esc(p.title)}${cap ? ": "+esc(cap) : ""}" decoding="async" ${i>2?'loading="lazy"':''}>${cap ? `<figcaption>${esc(cap)}</figcaption>` : ""}</figure>`
     : `<figure class="slide" style="aspect-ratio:4/5"><div class="placeholder" style="background:${p.color};height:calc(100% - 28px);border:1.5px solid var(--line)"><div class="halftone"></div><b>слайд ${i+1}</b></div><figcaption>${esc(cap)}</figcaption></figure>`).join("");
   /* wait (briefly) until the first slides are decoded, so the entrance never stutters on a cold cache */
@@ -989,6 +994,7 @@ async function openCase(id){
 }
 function closeCase(){
   if (viewer.hidden) return;
+  slidesBox.querySelectorAll("video").forEach(v => v.pause());
   const done = () => { viewer.hidden = true; document.body.style.overflow = ""; busy = false; if (window.gsap) gsap.set(viewer,{clearProps:"opacity"}); lastFocus && lastFocus.focus({preventScroll:true}); };
   if (!reduce && window.gsap){ gsap.killTweensOf([viewer, slidesBox, ".v-top", ".v-bar"]); busy = true; gsap.to(viewer,{opacity:0,duration:.22,ease:"power1.in",onComplete:done}); }
   else done();
@@ -1002,7 +1008,7 @@ function go(d){
 slidesBox.addEventListener("scroll", () => {
   const items = [...slidesBox.querySelectorAll(".slide")], mid = slidesBox.scrollLeft + slidesBox.clientWidth/2;
   let best = 0, bd = Infinity; items.forEach((it,i) => { const c = it.offsetLeft + it.offsetWidth/2, d = Math.abs(c-mid); if (d<bd){bd=d;best=i;} });
-  if (best !== cur){ cur = best; updCount(); }
+  if (best !== cur){ cur = best; updCount(); items.forEach((it,i) => { const v = it.querySelector("video"); if (v && i !== cur) v.pause(); }); }
 }, {passive:true});
 $("#grid").addEventListener("click", e => { const c = e.target.closest(".card"); if (c) openCase(c.dataset.id); });
 $("#v-close").addEventListener("click", closeCase);
@@ -1020,7 +1026,7 @@ document.addEventListener("keydown", e => {
 function warmImages(){
   const idle = window.requestIdleCallback || (fn => setTimeout(fn, 1200));
   idle(() => PROJECTS.forEach(p => [p.cover, ...(coarse ? [] : p.slides.slice(0,3).map(s=>s[0]))].forEach((src,i) => {
-    if (!src) return; const im = new Image(); im.decoding = "async"; im.src = imgURL(src, i ? 1600 : 960);
+    if (!src || isVid(src)) return; const im = new Image(); im.decoding = "async"; im.src = imgURL(src, i ? 1600 : 960);
   })));
 }
 

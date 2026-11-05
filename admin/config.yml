@@ -53,7 +53,7 @@ collections:
                 name: cover
                 widget: image
                 required: false
-                hint: "Лучше вертикальная 4:5. Если оставить пустой — возьмётся первый слайд. JPG/WEBP до ~5 МБ, сайт сам уменьшит."
+                hint: "Лучше вертикальная 4:5. Если оставить пустой — возьмётся первый слайд (может быть и видео). JPG/WEBP до ~5 МБ, сайт сам уменьшит."
               - label: "Слайды"
                 name: slides
                 widget: list
@@ -61,7 +61,8 @@ collections:
                 summary: "{{fields.caption}}"
                 collapsed: true
                 fields:
-                  - { label: "Картинка", name: image, widget: image }
+                  - { label: "Картинка", name: image, widget: image, required: false, hint: "Заполни картинку ИЛИ видео." }
+                  - { label: "Видео", name: video, widget: file, required: false, hint: "MP4 (H.264), лучше до 20 МБ. Если заполнено — вместо картинки покажется видео." }
                   - { label: "Подпись (необязательно)", name: caption, widget: string, required: false }
 
   # ── Тексты сайта ───────────────────────────────────────────
