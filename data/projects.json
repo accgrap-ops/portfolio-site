@@ -51,6 +51,9 @@
         {
           "image": "/img/uploads/photo_2026-11-05_23-29-06.jpg"
         }
+      ],
+      "tags": [
+        "Айдентика"
       ]
     },
     {
@@ -212,6 +215,9 @@
         },
         {
           "image": "/img/uploads/photo_2025-07-21_16-43-46-3-.jpg"
+        },
+        {
+          "image": "/img/uploads/изображение_2026-11-05_235705658.png"
         }
       ],
       "client": "",
@@ -341,6 +347,9 @@
         },
         {
           "image": "/img/uploads/photo_2026-07-01_17-59-00.jpg"
+        },
+        {
+          "image": "/img/uploads/изображение_2026-11-05_235705658.png"
         }
       ],
       "client": "",
