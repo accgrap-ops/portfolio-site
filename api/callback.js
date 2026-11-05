@@ -9,10 +9,10 @@ module.exports = async (req, res) => {
     .find(s => s.startsWith("decap_oauth_state="))?.split("=")[1];
 
   let status = "error";
-  let content = { message: "Не получилось войти. Закрой окно и попробуй ещё раз." };
+  let content = { message: "Не получилось войти. Попробуй ещё раз." };
 
   if (!code || !state || state !== saved) {
-    content = { message: "Сессия входа устарела. Закрой окно и нажми «Войти» ещё раз." };
+    content = { message: "Сессия входа устарела. Нажми «Войти» ещё раз." };
   } else {
     try {
       const r = await fetch("https://github.com/login/oauth/access_token", {
@@ -37,9 +37,21 @@ module.exports = async (req, res) => {
     }
   }
 
+  const redirectMode = (req.headers.cookie || "").split(";").map(s => s.trim()).includes("admin_oauth_mode=redirect");
+  const clear = ["decap_oauth_state", "admin_oauth_mode"].map(n => `${n}=; Path=/api; Max-Age=0; HttpOnly; Secure; SameSite=Lax`);
+  if (redirectMode) {
+    // Новая админка: возвращаем на /admin, токен — во фрагменте (#), он не уходит на сервер и сразу стирается страницей.
+    const frag = status === "success" ? `access_token=${encodeURIComponent(content.token)}` : `auth_error=${encodeURIComponent(content.message)}`;
+    res.setHeader("Set-Cookie", clear);
+    res.setHeader("Cache-Control", "no-store");
+    res.statusCode = 302;
+    res.setHeader("Location", `${origin}/admin/#${frag}`);
+    return res.end();
+  }
+
   const message = `authorization:github:${status}:${JSON.stringify(content)}`;
   const js = s => JSON.stringify(s).replace(/</g, "\\u003c");
-  res.setHeader("Set-Cookie", "decap_oauth_state=; Path=/api; Max-Age=0; HttpOnly; Secure; SameSite=Lax");
+  res.setHeader("Set-Cookie", clear);
   res.setHeader("Content-Type", "text/html; charset=utf-8");
   res.setHeader("Cache-Control", "no-store");
   res.end(`<!doctype html><html lang="ru"><meta charset="utf-8"><title>Вход…</title>

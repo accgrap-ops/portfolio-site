@@ -17,7 +17,12 @@ module.exports = (req, res) => {
     state,
     prompt: "select_account", // всегда показывать выбор аккаунта GitHub (и вход через Google)
   });
-  res.setHeader("Set-Cookie", `decap_oauth_state=${state}; Path=/api; HttpOnly; Secure; SameSite=Lax; Max-Age=600`);
+  // mode=redirect — новая админка: вход без всплывающего окна, callback вернёт обратно на /admin.
+  const redirectMode = new URL(req.url, `https://${host}`).searchParams.get("mode") === "redirect";
+  res.setHeader("Set-Cookie", [
+    `decap_oauth_state=${state}; Path=/api; HttpOnly; Secure; SameSite=Lax; Max-Age=600`,
+    `admin_oauth_mode=${redirectMode ? "redirect" : "popup"}; Path=/api; HttpOnly; Secure; SameSite=Lax; Max-Age=600`,
+  ]);
   res.statusCode = 302;
   res.setHeader("Location", `https://github.com/login/oauth/authorize?${params}`);
   res.end();

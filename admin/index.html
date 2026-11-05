@@ -334,28 +334,16 @@ async function gh(path, opts = {}){
 const b64ToText = b64 => new TextDecoder().decode(Uint8Array.from(atob(b64.replace(/\s/g, "")), c => c.charCodeAt(0)));
 const fileToB64 = file => new Promise((res, rej) => { const fr = new FileReader(); fr.onload = () => res(String(fr.result).split(",")[1]); fr.onerror = () => rej(fr.error); fr.readAsDataURL(file); });
 
-/* ---------- auth (same handshake Decap uses, so /api/auth + /api/callback stay as they are) ---------- */
-function login(){
-  const w = 600, h = 700, left = screenX + (outerWidth - w) / 2, top = screenY + (outerHeight - h) / 2;
-  const pop = open("/api/auth?provider=github&scope=repo", "gh-login", `width=${w},height=${h},left=${left},top=${top}`);
-  if (!pop) { say("Браузер заблокировал окно входа — разреши всплывающие окна.", true); return; }
-  let got = false;
-  const watch = setInterval(() => { if (pop.closed) { clearInterval(watch); if (!got) setTimeout(() => { if (!got) renderLogin("Окно входа закрылось, а ответ от GitHub не пришёл. Попробуй ещё раз; если повторится — пришли этот текст."); }, 800); } }, 400);
-  const onMsg = e => {
-    if (e.origin !== location.origin || typeof e.data !== "string") return;
-    if (e.data === "authorizing:github") { e.source && e.source.postMessage("authorizing:github", e.origin); return; }
-    const m = e.data.match(/^authorization:github:(success|error):(.*)$/s);
-    if (!m) return;
-    got = true; clearInterval(watch);
-    removeEventListener("message", onMsg);
-    let payload = {}; try { payload = JSON.parse(m[2]); } catch (_) {}
-    if (m[1] === "success" && payload.token) {
-      S.token = payload.token; try { localStorage.setItem(TOKEN_KEY, S.token); } catch (_) {}
-      boot();
-    } else renderLogin(payload.message || "Не получилось войти.");
-  };
-  addEventListener("message", onMsg);
-}
+/* ---------- auth: обычный переход на GitHub и обратно (/api/auth?mode=redirect → /api/callback → /admin/#access_token=…) ---------- */
+function login(){ location.href = "/api/auth?mode=redirect"; }
+let AUTH_ERROR = "";
+(() => {
+  const h = new URLSearchParams(location.hash.slice(1));
+  if (!h.has("access_token") && !h.has("auth_error")) return;
+  if (h.get("access_token")) { S.token = h.get("access_token"); try { localStorage.setItem(TOKEN_KEY, S.token); } catch (_) {} }
+  AUTH_ERROR = h.get("auth_error") || "";
+  history.replaceState(null, "", location.pathname + location.search);
+})();
 function logout(){
   S.token = null; try { localStorage.removeItem(TOKEN_KEY); } catch (_) {}
   renderLogin();
@@ -373,7 +361,7 @@ function renderLogin(err){
 
 /* ---------- load ---------- */
 async function boot(){
-  if (!S.token) return renderLogin();
+  if (!S.token) return renderLogin(AUTH_ERROR);
   $("#app").innerHTML = `<div class="loading">Загружаю работы…</div>`;
   try {
     const [user, repo] = await Promise.all([gh("/user"), gh(`/repos/${REPO}`)]);
