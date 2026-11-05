@@ -161,12 +161,6 @@
           "image": "/img/uploads/photo_2025-03-22_12-54-11.jpg"
         },
         {
-          "image": "/img/uploads/photo_2025-03-22_13-01-53.jpg"
-        },
-        {
-          "image": "/img/uploads/photo_2025-04-30_18-01-42.jpg"
-        },
-        {
           "image": "/img/uploads/photo_2025-07-21_16-55-50.jpg"
         },
         {
@@ -187,6 +181,12 @@
         },
         {
           "image": "/img/uploads/photo_2026-03-25_15-02-43.jpg"
+        },
+        {
+          "image": "/img/uploads/photo_2025-03-22_13-01-53.jpg"
+        },
+        {
+          "image": "/img/uploads/photo_2025-04-30_18-01-42.jpg"
         }
       ],
       "client": "",
@@ -320,6 +320,12 @@
     {
       "slides": [
         {
+          "image": "/img/uploads/photo_2026-11-05_23-29-21.jpg"
+        },
+        {
+          "image": "/img/uploads/photo-2026-11-05-23-29-30-mw3y137i5ut.jpg"
+        },
+        {
           "image": "/img/uploads/photo_2025-03-22_12-56-40.jpg"
         },
         {
@@ -341,10 +347,10 @@
           "image": "/img/uploads/image_2026-11-05_23-13-09.png"
         },
         {
-          "image": "/img/uploads/image_2026-11-05_23-07-20.png"
+          "video": "/img/uploads/img-9124-mw3y2ik0xy4.mp4"
         },
         {
-          "image": "/img/uploads/photo_2026-11-05_23-29-21.jpg"
+          "image": "/img/uploads/image_2026-11-05_23-07-20.png"
         },
         {
           "image": "/img/uploads/photo_2026-07-01_17-59-00.jpg"
