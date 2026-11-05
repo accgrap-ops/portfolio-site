@@ -3,6 +3,83 @@
     {
       "slides": [
         {
+          "image": "/img/uploads/photo_2026-02-15_17-19-31.jpg"
+        },
+        {
+          "image": "/img/uploads/photo_2026-02-15_17-19-29.jpg"
+        },
+        {
+          "image": "/img/uploads/photo_2026-02-15_17-19-30.jpg"
+        },
+        {
+          "image": "/img/uploads/photo_2026-03-18_12-57-28.jpg"
+        },
+        {
+          "image": "/img/uploads/photo_2026-11-05_23-44-46.jpg"
+        },
+        {
+          "image": "/img/uploads/photo_2026-11-05_23-48-08.jpg"
+        }
+      ],
+      "client": "ENRICH — бренда халяльной уходовой косметики",
+      "desc": "Разработала визуальную айдентику для ENRICH — бренда халяльной уходовой косметики. Создала современный и минималистичный фирменный стиль с акцентом на натуральность, качество и доверие, формируя узнаваемый и целостный образ бренда.",
+      "visible": true,
+      "isNew": false,
+      "cover": "/img/uploads/photo_2026-02-15_17-19-31.jpg",
+      "title": "ENRICH",
+      "tags": [
+        "Айдентика"
+      ],
+      "year": "2025"
+    },
+    {
+      "visible": true,
+      "isNew": false,
+      "title": "ФРУКТЯШКА ",
+      "client": "Разработала брендинг с нуля для сети магазинов натуральных соков. Создала яркую, дружелюбную айдентику, ориентированную на детей и родителей, с акцентом на свежесть, натуральность и узнаваемость бренда.",
+      "cover": "/img/uploads/photo_2026-11-05_23-28-40.jpg",
+      "slides": [
+        {
+          "image": "/img/uploads/photo_2026-11-05_23-28-40.jpg"
+        },
+        {
+          "image": "/img/uploads/photo_2026-11-05_23-27-44.jpg"
+        },
+        {
+          "image": "/img/uploads/photo_2026-11-05_23-28-48.jpg"
+        },
+        {
+          "image": "/img/uploads/photo_2026-11-05_23-29-06.jpg"
+        }
+      ]
+    },
+    {
+      "visible": true,
+      "isNew": false,
+      "title": "DOPPA.UZ",
+      "client": "Doppa.uz — Digital Marketplace.  Участие в развитии визуального образа международной платформы Doppa.uz при выходе на рынок Узбекистана. Создание графических материалов и рекламных коммуникаций для продвижения сервиса и формирования узнаваемости бренда среди локальной аудитории.",
+      "year": "2026",
+      "tags": [
+        "SMM"
+      ],
+      "slides": [
+        {
+          "image": "/img/uploads/пост-3-2.jpg"
+        },
+        {
+          "image": "/img/uploads/сторис-бепуль.jpg"
+        },
+        {
+          "image": "/img/uploads/квартира-ру.jpg"
+        },
+        {
+          "image": "/img/uploads/маскот-с-телефоном.jpg"
+        }
+      ]
+    },
+    {
+      "slides": [
+        {
           "image": "img/hs-logo.webp",
           "caption": "логотип"
         },
@@ -100,6 +177,12 @@
         },
         {
           "image": "/img/uploads/фут-2.jpg"
+        },
+        {
+          "image": "/img/uploads/photo_2026-11-05_23-39-54.jpg"
+        },
+        {
+          "image": "/img/uploads/photo_2026-03-25_15-02-43.jpg"
         }
       ],
       "client": "",
@@ -231,6 +314,33 @@
       "slides": [
         {
           "image": "/img/uploads/photo_2025-03-22_12-56-40.jpg"
+        },
+        {
+          "image": "/img/uploads/photo_2025-03-22_12-56-44.jpg"
+        },
+        {
+          "image": "/img/uploads/dsc_5798_1-копия.jpg"
+        },
+        {
+          "image": "/img/uploads/портрет-консультанта-enrich-в-магазине.png"
+        },
+        {
+          "image": "/img/uploads/изображение_2026-11-05_231539593.png"
+        },
+        {
+          "image": "/img/uploads/photo_2026-11-05_23-13-59.jpg"
+        },
+        {
+          "image": "/img/uploads/image_2026-11-05_23-13-09.png"
+        },
+        {
+          "image": "/img/uploads/image_2026-11-05_23-07-20.png"
+        },
+        {
+          "image": "/img/uploads/photo_2026-11-05_23-29-21.jpg"
+        },
+        {
+          "image": "/img/uploads/photo_2026-07-01_17-59-00.jpg"
         }
       ],
       "client": "",
