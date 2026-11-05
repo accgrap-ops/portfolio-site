@@ -326,7 +326,7 @@ async function gh(path, opts = {}){
     body: opts.body ? JSON.stringify(opts.body) : undefined,
     cache: "no-store"
   });
-  if (r.status === 401) { logout(); throw new Error("Вход устарел — войди ещё раз."); }
+  if (r.status === 401) { S.token = null; try { localStorage.removeItem(TOKEN_KEY); } catch (_) {} throw new Error("GitHub не принял вход (401). Попробуй войти ещё раз."); }
   const data = r.status === 204 ? null : await r.json().catch(() => null);
   if (!r.ok) throw new Error((data && data.message) || `GitHub ответил ${r.status}`);
   return data;
@@ -339,11 +339,14 @@ function login(){
   const w = 600, h = 700, left = screenX + (outerWidth - w) / 2, top = screenY + (outerHeight - h) / 2;
   const pop = open("/api/auth?provider=github&scope=repo", "gh-login", `width=${w},height=${h},left=${left},top=${top}`);
   if (!pop) { say("Браузер заблокировал окно входа — разреши всплывающие окна.", true); return; }
+  let got = false;
+  const watch = setInterval(() => { if (pop.closed) { clearInterval(watch); if (!got) setTimeout(() => { if (!got) renderLogin("Окно входа закрылось, а ответ от GitHub не пришёл. Попробуй ещё раз; если повторится — пришли этот текст."); }, 800); } }, 400);
   const onMsg = e => {
     if (e.origin !== location.origin || typeof e.data !== "string") return;
     if (e.data === "authorizing:github") { e.source && e.source.postMessage("authorizing:github", e.origin); return; }
     const m = e.data.match(/^authorization:github:(success|error):(.*)$/s);
     if (!m) return;
+    got = true; clearInterval(watch);
     removeEventListener("message", onMsg);
     let payload = {}; try { payload = JSON.parse(m[2]); } catch (_) {}
     if (m[1] === "success" && payload.token) {
@@ -379,7 +382,8 @@ async function boot(){
     await loadData();
     renderApp();
   } catch (e) {
-    if (S.token) renderLogin(e.message);
+    console.error("Админка: ошибка входа/загрузки", e);
+    renderLogin(e.message || String(e));
   }
 }
 async function loadData(){
