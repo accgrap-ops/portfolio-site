@@ -15,6 +15,7 @@ module.exports = (req, res) => {
     redirect_uri: `https://${host}/api/callback`,
     scope: "repo,user",
     state,
+    prompt: "select_account", // всегда показывать выбор аккаунта GitHub (и вход через Google)
   });
   res.setHeader("Set-Cookie", `decap_oauth_state=${state}; Path=/api; HttpOnly; Secure; SameSite=Lax; Max-Age=600`);
   res.statusCode = 302;
